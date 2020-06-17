@@ -1,0 +1,40 @@
+{
+  "name": "htl-template-loader",
+  "version": "1.0.0",
+  "description": "Webpack loader for HTL/Sightly templates",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --no-timeout test/*.test.js",
+    "example": "webpack --config example/webpack.config.js -d",
+    "format": "prettier --write \"**/*.js\""
+  },
+  "keywords": [
+    "htl",
+    "sightly"
+  ],
+  "author": "Jan Nicklas",
+  "repository": "github:jantimon/htl-loader",
+  "license": "MIT",
+  "devDependencies": {
+    "@adobe/htlengine": "^4.5.0",
+    "fs-extra": "^9.0.1",
+    "husky": "^4.2.5",
+    "memfs": "3.2.0",
+    "mocha": "^8.0.1",
+    "prettier": "^2.0.5",
+    "pretty-quick": "^2.0.1",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  },
+  "peerDependencies": {
+    "@adobe/htlengine": "^4.5.0"
+  },
+  "dependencies": {
+    "loader-utils": "^2.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}

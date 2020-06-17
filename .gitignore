@@ -1,0 +1,4 @@
+node_modules
+test/tmp
+example/dist
+package-lock.json

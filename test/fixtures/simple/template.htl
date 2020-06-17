@@ -1,0 +1,9 @@
+<template data-sly-template.greeter="${@ name}">
+  <h1>Hello ${name}!</h1>
+</template>
+
+<template data-sly-template.address="${@ address}">
+  <p>${address.firstName} ${address.lastName}</p>
+  <p>${address.streetName} ${address.streetNumber}</p>
+  <p>${address.postalCode} ${address.cityName}</p>
+</template>
