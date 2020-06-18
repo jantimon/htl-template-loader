@@ -4,7 +4,7 @@ module.exports = {
   context: __dirname,
 
   output: {
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, "dist"),
   },
 
   module: {
@@ -12,10 +12,9 @@ module.exports = {
       {
         test: /\.htl$/,
         use: {
-          loader: path.resolve("./index.js")
-        }
-      }
-    ]
-  }
-
+          loader: path.resolve("./index.js"),
+        },
+      },
+    ],
+  },
 };

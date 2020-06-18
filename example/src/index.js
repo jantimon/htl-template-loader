@@ -1,7 +1,10 @@
-import { render } from './template.htl';
+import { render } from "./template.htl";
 
 async function start() {
-  document.body.insertAdjacentHTML("beforeend", await render('greeter', {name: 'Sue'}));
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    await render("greeter", { name: "Sue" })
+  );
 }
 
 start();

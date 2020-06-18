@@ -9,7 +9,6 @@ node_js:
 
 install:
   - travis_retry npm install
-  - travis_retry npm run postinstall
 
 script:
   - npm test

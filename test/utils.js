@@ -11,7 +11,7 @@ async function compile(fixtureFolderName, options = {}) {
     output: {
       path: distFolder,
       filename: "bundle.js",
-      libraryTarget: "commonjs2"
+      libraryTarget: "commonjs2",
     },
     module: {
       rules: [
@@ -19,11 +19,11 @@ async function compile(fixtureFolderName, options = {}) {
           test: /\.htl$/,
           use: {
             loader: path.resolve(__dirname, "../index.js"),
-            options
-          }
-        }
-      ]
-    }
+            options,
+          },
+        },
+      ],
+    },
   });
 
   /**
