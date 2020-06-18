@@ -6,11 +6,17 @@
   "scripts": {
     "test": "mocha --no-timeout test/*.test.js",
     "example": "webpack --config example/webpack.config.js -d",
-    "format": "prettier --write \"**/*.js\""
+    "format": "prettier --write \"**/*.js\"",
+    "release": "standard-version"
   },
   "keywords": [
     "htl",
     "sightly"
+  ],
+  "files": [
+    "index.js",
+    "lib/htl-runtime.js",
+    "types.d.ts"
   ],
   "author": "Jan Nicklas",
   "repository": "github:jantimon/htl-loader",
@@ -30,7 +36,8 @@
     "@adobe/htlengine": "^4.5.0"
   },
   "dependencies": {
-    "loader-utils": "^2.0.0"
+    "loader-utils": "^2.0.0",
+    "standard-version": "8.0.0"
   },
   "husky": {
     "hooks": {
