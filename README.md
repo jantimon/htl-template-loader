@@ -38,6 +38,10 @@ See [./example](./example).
 ```js
 import template from './template.htl';
 
+// If no template name is given use the first exported data-sly-template
+console.log(await template({ name: 'Alex' });
+
+// To call a specific template pass the name as first parameter
 console.log(await template('greeter', { name: 'Alex' });
 ```
 

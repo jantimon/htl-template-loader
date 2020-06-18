@@ -1,6 +1,6 @@
 {
   "name": "htl-template-loader",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Webpack loader for HTL/Sightly templates",
   "main": "index.js",
   "scripts": {

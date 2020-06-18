@@ -34,13 +34,32 @@ describe("Build Tests", () => {
     );
   });
 
-  it("Returns template names.", async () => {
+  it("Returns render functions.", async () => {
     const [bundleResult] = await compile("simple");
     const templates = await bundleResult.getTemplates();
-    const renderResult = await templates.greeter({name: 'Alex'})
+    const renderResult = await templates.greeter({ name: "Alex" });
+    assert.equal(renderResult.trim(), "<h1>Hello Alex!</h1>");
+  });
+
+  it("If no template name is given use the first exported template.", async () => {
+    const [bundleResult] = await compile("simple");
+    const renderResult = await bundleResult.render({ name: "Alex" });
+    assert.equal(renderResult.trim(), "<h1>Hello Alex!</h1>");
+  });
+
+  it("If no template name is given use the first exported template.", async () => {
+    const [bundleResult] = await compile("simple");
+    let renderError;
+    try {
+      await bundleResult.render("WRONG-TEMPLATE-NAME", {
+        name: "Alex",
+      });
+    } catch (e) {
+      renderError = e.message;
+    }
     assert.equal(
-      renderResult.trim(),
-      "<h1>Hello Alex!</h1>"
+      renderError,
+      'File "template.htl" does not export a template with the name "WRONG-TEMPLATE-NAME."'
     );
   });
 });

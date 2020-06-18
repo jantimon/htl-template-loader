@@ -1,7 +1,8 @@
 const { getOptions, parseQuery } = require("loader-utils");
 const { Compiler } = require("@adobe/htlengine");
+const path = require("path");
 
-module.exports = async function(source) {
+module.exports = async function (source) {
   const options = getOptions(this);
   const query = this.resourceQuery ? parseQuery(this.resourceQuery) : null;
   const settings = Object.assign(
@@ -15,13 +16,17 @@ module.exports = async function(source) {
       runtimeVars: [],
       moduleImportGenerator: null,
       data: {},
-      resourceRoot: this.rootContext
+      resourceRoot: this.rootContext,
     },
     options,
     query
   );
 
-  console.log(this.resourceQuery);
+  const getRelativeFileName = () =>
+    path.relative(
+      this.context,
+      this.request.replace(/^.+\!/, "").replace(/\?.+$/)
+    );
 
   // Set up compiler
   const compiler = new Compiler()
@@ -30,7 +35,7 @@ module.exports = async function(source) {
     .withRuntimeHTLEngine(require.resolve("./lib/htl-runtime"))
     .withRuntimeGlobalName(settings.globalName);
 
-  settings.runtimeVars.forEach(name => {
+  settings.runtimeVars.forEach((name) => {
     compiler.withRuntimeVar(name);
   });
 
@@ -38,8 +43,8 @@ module.exports = async function(source) {
   let compiledCode = await compiler.compileToString(source, this.context);
 
   return `
-    module.exports = (templateName, templateParameters) => module.exports.render(templateName, templateParameters);
-    module.exports.default = (templateName, templateParameters) => module.exports.render(templateName, templateParameters);
+    module.exports = (...args) => module.exports.render(...args);
+    module.exports.default = (...args) => module.exports.render(...args);
    
     ${compiledCode}
 
@@ -70,14 +75,25 @@ module.exports = async function(source) {
       return Object.keys(await module.exports.getTemplates());
     }
 
-    module.exports.render = async function template(templateName, templateParameters) {
+    module.exports.render = async function template(...args) {
       const templates = await module.exports.getTemplates();
+
+      // Make the templateName parameter optional
+      // e.g.: render({ href: '#'})
+      // e.g.: render('link', {href: '#'}) 
+      const templateParameters = args[args.length - 1]; 
+      const templateName = args.length > 1 ? args[0] : Object.keys(templates)[0];
+
+      if (Object.keys(templates).length === 0) {
+        throw new Error(\`File "${getRelativeFileName()}" does not export any data-sly-template."\`)
+      }
+
       if (!templates[templateName]) {
-          throw new Error(\`File \${""} does not export a template with the name "\${templateName}."\`)
+          throw new Error(\`File "${getRelativeFileName()}" does not export a template with the name "\${templateName}."\`)
       }
       return templates[templateName](templateParameters);
     }
 
     delete(module.exports.main);
-  `
+  `;
 };
