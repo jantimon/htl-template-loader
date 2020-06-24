@@ -45,6 +45,41 @@ console.log(await template({ name: 'Alex' });
 console.log(await template('greeter', { name: 'Alex' });
 ```
 
+## Typings
+
+`htl-template-loader` provides optional typescript typings.
+If you would like to define that all `*.htl` files export the htl-template-loader functions you can use:
+
+```ts
+declare module '*.htl' {
+  export const {
+    render,
+    getTemplate,
+    getTemplates,
+    getTemplateNames,
+  }: typeof import ('./types') ;
+  export default render;
+}
+```
+
+This will give you autocomplete and type detection:
+
+```ts
+import template from './demo.html';
+console.log(await template({ name: 'Alex' }));
+```
+
+Unfortunately the `htl-template-loader` is not able to extract the typings for a specific template.  
+However you can define the template parameters by hand:
+
+```ts
+import {getTemplate} from './demo.html';
+const greetTemplate = getTemplate<{ name: string}>('greet');
+
+console.log(await greetTemplate({name: 'Alex'}));
+```
+
+
 ## License
 
 [MIT](http://www.opensource.org/licenses/mit-license)

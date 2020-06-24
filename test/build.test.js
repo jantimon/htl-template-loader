@@ -1,3 +1,4 @@
+// @ts-check
 const assert = require("assert");
 const { compile } = require("./utils");
 
@@ -9,6 +10,7 @@ describe("Build Tests", () => {
   });
 
   it("Render a htl template with nested data.", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("simple");
     const renderResult = await bundleResult.render("address", {
       address: {
@@ -27,6 +29,7 @@ describe("Build Tests", () => {
   });
 
   it("Returns template names.", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("simple");
     assert.equal(
       String(await bundleResult.getTemplateNames()),
@@ -35,6 +38,7 @@ describe("Build Tests", () => {
   });
 
   it("Returns render functions.", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("simple");
     const templates = await bundleResult.getTemplates();
     const renderResult = await templates.greeter({ name: "Alex" });
@@ -42,12 +46,14 @@ describe("Build Tests", () => {
   });
 
   it("If no template name is given use the first exported template.", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("simple");
     const renderResult = await bundleResult.render({ name: "Alex" });
     assert.equal(renderResult.trim(), "<h1>Hello Alex!</h1>");
   });
 
   it("If no template name is given use the first exported template.", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("simple");
     let renderError;
     try {
@@ -61,5 +67,25 @@ describe("Build Tests", () => {
       renderError,
       'File "template.htl" does not export a template with the name "WRONG-TEMPLATE-NAME."'
     );
+  });
+
+  it("Returns a single renderable template", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("simple");
+    const template = bundleResult.getTemplate("greeter");
+    const templateResult = await template({
+      name: "Alex",
+    });
+    assert.equal(templateResult.trim(), "<h1>Hello Alex!</h1>");
+  });
+
+  it("Returns the first renderable template if no name is given", async () => {
+    /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("simple");
+    const template = bundleResult.getTemplate();
+    const templateResult = await template({
+      name: "Alex",
+    });
+    assert.equal(templateResult.trim(), "<h1>Hello Alex!</h1>");
   });
 });

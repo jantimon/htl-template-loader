@@ -18,6 +18,7 @@
     "lib/htl-runtime.js",
     "types.d.ts"
   ],
+  "types": "./typings.ts",
   "author": "Jan Nicklas",
   "repository": "github:jantimon/htl-loader",
   "license": "MIT",

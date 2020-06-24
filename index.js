@@ -71,27 +71,35 @@ module.exports = async function (source) {
       return templateRenderFunctions;
     }
 
+    /** Returns a named template */
+    module.exports.getTemplate = function getTemplate(name) {
+      return async (parameters) => {
+        const templates = await module.exports.getTemplates();
+        if (Object.keys(templates).length === 0) {
+          throw new Error(\`File "${getRelativeFileName()}" does not export any data-sly-template."\`)
+        }
+        // Use the first exported template if no templateName was provided
+        const templateName = name !== undefined ? name : Object.keys(templates)[0];
+        if (!templates[templateName]) {
+          throw new Error(\`File "${getRelativeFileName()}" does not export a template with the name "\${templateName}."\`)
+        }
+        // Execute template
+        return templates[templateName](parameters);
+      }
+    }
+
     module.exports.getTemplateNames = async function getTemplateNames() {
       return Object.keys(await module.exports.getTemplates());
     }
 
     module.exports.render = async function template(...args) {
-      const templates = await module.exports.getTemplates();
-
       // Make the templateName parameter optional
       // e.g.: render({ href: '#'})
       // e.g.: render('link', {href: '#'}) 
       const templateParameters = args[args.length - 1]; 
-      const templateName = args.length > 1 ? args[0] : Object.keys(templates)[0];
-
-      if (Object.keys(templates).length === 0) {
-        throw new Error(\`File "${getRelativeFileName()}" does not export any data-sly-template."\`)
-      }
-
-      if (!templates[templateName]) {
-          throw new Error(\`File "${getRelativeFileName()}" does not export a template with the name "\${templateName}."\`)
-      }
-      return templates[templateName](templateParameters);
+      const templateName = args.length > 1 ? args[0] : undefined;
+      const template = module.exports.getTemplate(templateName);
+      return template(templateParameters);
     }
 
     delete(module.exports.main);
