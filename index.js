@@ -27,8 +27,16 @@ module.exports = async function (source) {
     this.request.replace(/^.+\!/, "").replace(/\?.+$/)
   );
 
+  const adobeTemplateLoader = require('@adobe/htlengine/src/compiler/TemplateLoader')('.');
+  const templateLoader = (...args) => {
+      const [base, uri] = args;
+      this.addDependency(path.resolve(base, uri));
+      return adobeTemplateLoader(...args);
+  }
+
   // Set up compiler
   const compiler = new Compiler()
+    .withTemplateLoader(templateLoader)
     .withDirectory(this.rootContext)
     .includeRuntime(settings.includeRuntime)
     .withRuntimeHTLEngine(require.resolve("./lib/htl-runtime"))
