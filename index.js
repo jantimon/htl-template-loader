@@ -36,10 +36,10 @@ module.exports = async function (source) {
 
   // Set up compiler
   const compiler = new Compiler()
-    .withTemplateLoader(templateLoader)
     .withDirectory(this.rootContext)
     .includeRuntime(settings.includeRuntime)
     .withRuntimeHTLEngine(require.resolve("./lib/htl-runtime"))
+    .withTemplateLoader(templateLoader)
     .withRuntimeGlobalName(settings.globalName);
 
   settings.runtimeVars.forEach((name) => {
