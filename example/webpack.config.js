@@ -1,6 +1,8 @@
 const path = require("path");
 
 module.exports = {
+  devtool: "none",
+  mode: "development",
   context: __dirname,
 
   output: {
