@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.6.0](https://github.com/jantimon/htl-loader/compare/v1.5.0...v1.6.0) (2020-06-25)
+
+
+### Features
+
+* track included templates ([d13d9ab](https://github.com/jantimon/htl-loader/commit/d13d9ab56d0ab75488884da3b237d705950c2ade))
+
 ## [1.5.0](https://github.com/jantimon/htl-loader/compare/v1.3.0...v1.5.0) (2020-06-25)
 
 
