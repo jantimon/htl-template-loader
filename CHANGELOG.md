@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.7.1](https://github.com/jantimon/htl-loader/compare/v1.7.0...v1.7.1) (2020-06-25)
+
+
+### Bug Fixes
+
+* adjust configuration order to enforce template loader execution ([1885274](https://github.com/jantimon/htl-loader/commit/18852748a5549fc5bb4605782444614a5d8800d1))
+
 ## [1.7.0](https://github.com/jantimon/htl-loader/compare/v1.6.0...v1.7.0) (2020-06-25)
 
 
