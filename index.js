@@ -17,6 +17,7 @@ module.exports = async function (source) {
       moduleImportGenerator: null,
       data: {},
       resourceRoot: this.rootContext,
+      templateRoot: this.rootContext,
     },
     options,
     query
@@ -27,12 +28,15 @@ module.exports = async function (source) {
     this.request.replace(/^.+\!/, "").replace(/\?.+$/)
   );
 
-  const adobeTemplateLoader = require('@adobe/htlengine/src/compiler/TemplateLoader')('.');
+  const templateBasePathes = [".", settings.templateRoot];
+  const adobeTemplateLoader = require("@adobe/htlengine/src/compiler/TemplateLoader")(
+    templateBasePathes
+  );
   const templateLoader = (...args) => {
-      const [base, uri] = args;
-      this.addDependency(path.resolve(base, uri));
-      return adobeTemplateLoader(...args);
-  }
+    const [base, uri] = args;
+    this.addDependency(path.resolve(base, uri));
+    return adobeTemplateLoader(...args);
+  };
 
   // Set up compiler
   const compiler = new Compiler()

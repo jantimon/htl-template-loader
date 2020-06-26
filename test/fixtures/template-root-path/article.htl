@@ -1,0 +1,5 @@
+<template data-sly-template.article="${@ headline, body}">
+  <sly data-sly-use.headline="template-root-path/headline.htl"
+       data-sly-call="${headline.headline @ text=headline}"/>
+  <p>${body}</p>
+</template>

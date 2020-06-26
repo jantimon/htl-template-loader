@@ -1,5 +1,6 @@
 // @ts-check
 const assert = require("assert");
+const path = require("path");
 const { compile } = require("./utils");
 
 describe("Build Tests", () => {
@@ -52,7 +53,7 @@ describe("Build Tests", () => {
     assert.equal(renderResult.trim(), "<h1>Hello Alex!</h1>");
   });
 
-  it("If no template name is given use the first exported template.", async () => {
+  it("Reports an error if the template does not contain the required template.", async () => {
     /** @type {[import('../types')]} - fixtures/simple/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("simple");
     let renderError;
@@ -87,5 +88,35 @@ describe("Build Tests", () => {
       name: "Alex",
     });
     assert.equal(templateResult.trim(), "<h1>Hello Alex!</h1>");
+  });
+
+  it("It is able to import another template", async () => {
+    /** @type {[import('../types')]} - fixtures/load-template/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("load-template");
+    const template = bundleResult.getTemplate();
+    const templateResult = await template({
+      headline: "Hello",
+      body: "How are you?",
+    });
+    assert.equal(
+      templateResult.trim().replace(/\s\s+/g, ""),
+      `<h1>Hello</h1><p>How are you?</p>`
+    );
+  });
+
+  it("It is able to use a template-root-path", async () => {
+    /** @type {[import('../types')]} - fixtures/template-root-path/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("template-root-path", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const template = bundleResult.getTemplate();
+    const templateResult = await template({
+      headline: "Hello",
+      body: "How are you?",
+    });
+    assert.equal(
+      templateResult.trim().replace(/\s\s+/g, ""),
+      `<h1>Hello</h1><p>How are you?</p>`
+    );
   });
 });

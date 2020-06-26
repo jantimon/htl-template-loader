@@ -6,6 +6,7 @@ const memfs = require("memfs");
 async function compile(fixtureFolderName, options = {}) {
   const distFolder = path.resolve(__dirname, "/dist");
   const compiler = webpack({
+    devtool: false,
     context: path.resolve(__dirname, "fixtures", fixtureFolderName),
     entry: `./entry.js`,
     mode: "development",

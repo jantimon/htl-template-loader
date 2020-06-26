@@ -45,6 +45,40 @@ console.log(await template({ name: 'Alex' });
 console.log(await template('greeter', { name: 'Alex' });
 ```
 
+## Loader options
+
+### templateRoot
+
+The @adobe/htl-engine provides ships with a `templateLoader` with its own resolve logic to import templates inside templates.
+
+To the base folder for resolving subtemlates you cen set the `templateRoot` directly for the loader.
+
+For example if your templates inside `/my-project/templates` and 
+your templates uses another templaste called `example/headline.htl` you can set `/my-project/templates` as `templateRoot`:
+
+```html
+<sly 
+  data-sly-use.headline="example/headline.htl"
+  data-sly-call="${headline.headline @ text=text}"
+/>
+```
+
+```js
+{
+  module: {
+    rules: [
+      {
+        test: /\.htl$/,
+        use: ["htl-template-loader"],
+        options: {
+          templateRoot: '/my-project/templates'
+        }
+      }
+    ];
+  }
+}
+```
+
 ## Typings
 
 `htl-template-loader` provides optional typescript typings.
