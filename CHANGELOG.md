@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.8.0](https://github.com/jantimon/htl-loader/compare/v1.7.1...v1.8.0) (2020-06-26)
+
+
+### Features
+
+* Add templateRoot option ([5a6b0a7](https://github.com/jantimon/htl-loader/commit/5a6b0a7526ecdf117719ee0f6accaf4dd361df65))
+
 ### [1.7.1](https://github.com/jantimon/htl-loader/compare/v1.7.0...v1.7.1) (2020-06-25)
 
 
