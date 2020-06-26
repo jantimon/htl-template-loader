@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.9.0](https://github.com/jantimon/htl-loader/compare/v1.8.0...v1.9.0) (2020-06-26)
+
+
+### Features
+
+* Allow to define models for the templates ([74bf5d9](https://github.com/jantimon/htl-loader/commit/74bf5d9ecf34746ee031ecd03f9fa0f97be863f5))
+
 ## [1.8.0](https://github.com/jantimon/htl-loader/compare/v1.7.1...v1.8.0) (2020-06-26)
 
 
