@@ -69,9 +69,11 @@ your templates uses another templaste called `example/headline.htl` you can set 
     rules: [
       {
         test: /\.htl$/,
-        use: ["htl-template-loader"],
-        options: {
-          templateRoot: '/my-project/templates'
+        use: {
+          loader: "htl-template-loader",
+          options: {
+            templateRoot: '/my-project/templates'
+          }
         }
       }
     ];
