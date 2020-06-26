@@ -119,4 +119,19 @@ describe("Build Tests", () => {
       `<h1>Hello</h1><p>How are you?</p>`
     );
   });
+
+  it("It allows to provide different models", async () => {
+    /** @type {[import('../types')]} - fixtures/template-root-path/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("model", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const template = bundleResult.getTemplate();
+    const templateResult = await template(
+      {
+        text: "Alex",
+      },
+      { "com.foo.core.models.i18n": { salutation: "Hey" } }
+    );
+    assert.equal(templateResult.trim(), `<h1>Hey Alex</h1>`);
+  });
 });

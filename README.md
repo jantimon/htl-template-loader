@@ -115,6 +115,28 @@ const greetTemplate = getTemplate<{ name: string}>('greet');
 console.log(await greetTemplate({name: 'Alex'}));
 ```
 
+## Models
+
+`htl-template-loader` allows to define models which can be used inside a template
+
+```html
+<template data-sly-template.headline="${@ text}">
+  <sly data-sly-use.i18n="com.foo.core.models.i18n"/>
+  <h1>${i18n.salutation} ${text}</h1>
+</template>
+```
+
+Define the model for `com.foo.core.models.i18n` and execute the template:
+
+```ts
+import render from './demo.html';
+render(
+  { text: 'Alex'}, 
+  { 
+    'com.foo.core.models.i18n': { salutation: 'hi' }
+  }
+)
+```
 
 ## License
 
