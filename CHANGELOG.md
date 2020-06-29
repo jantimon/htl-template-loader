@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.1.0](https://github.com/jantimon/htl-loader/compare/v2.0.0...v2.1.0) (2020-06-29)
+
+
+### Features
+
+* mock global htl objects ([2ca7104](https://github.com/jantimon/htl-loader/commit/2ca710490b8fd4d09fa927699d296227fffc4bd5))
+
 ## [2.0.0](https://github.com/jantimon/htl-loader/compare/v1.9.0...v2.0.0) (2020-06-29)
 
 
