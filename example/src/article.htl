@@ -1,12 +1,8 @@
 <template data-sly-template.article="${@ name, body}">
-  <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
   <sly data-sly-use.headline="./headline.htl"
        data-sly-call="${headline.headline @ text=name}"/>
   <p>${body}</p>
-  <p>${myModel.end}</p>
 </template>
-
-
 
 <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
 <p>${myModel.end}</p>
