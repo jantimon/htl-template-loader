@@ -33,7 +33,7 @@ export function render(...args: any[]): Promise<string> {
  * @param {ITemplateParameters} templateParameters - all values to be passed into the template
  */
 export function renderMain<TTemplateParameters extends ITemplateParameters>(
-  mainTemplateParameters: TTemplateParameters,
+  mainTemplateParameters?: TTemplateParameters,
   templateModelsMap?: ITemplateModelLoader
 ): Promise<string>;
 export default renderMain;

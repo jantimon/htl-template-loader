@@ -1,0 +1,3 @@
+<div data-sly-test="${wcmmode.edit}">Edit mode</div>
+<div data-sly-test="${wcmmode.edit}">Preview mode</div>
+<div>Live mode</div>

@@ -4,6 +4,7 @@ declare module '*.htl' {
     getTemplates,
     getTemplateNames,
     render,
+    renderMain
   }: typeof import ('./types') ;
-  export default render;
+  export default renderMain;
 }

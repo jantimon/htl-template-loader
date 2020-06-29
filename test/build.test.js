@@ -147,4 +147,14 @@ describe("Build Tests", () => {
     );
     assert.equal(templateResult.trim(), `<h1>Greetings</h1>`);
   });
+
+  it("It allows to access global valeus like wcmmode", async () => {
+    /** @type {[import('../types')]} - fixtures/global-values/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("global-values", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const template = bundleResult.renderMain;
+    const templateResult = await template();
+    assert.equal(templateResult.trim(), `<div>Live mode</div>`);
+  });
 });

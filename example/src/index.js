@@ -1,7 +1,6 @@
 import { render, renderMain } from "./article.htl";
 
 async function start() {
-
   document.body.insertAdjacentHTML(
     "beforeend",
 
@@ -15,7 +14,7 @@ async function start() {
 
   document.body.insertAdjacentHTML(
     "beforeend",
-    
+
     // Render the entire file
     await renderMain(
       { name: "Sue", body: "Lorem ipsum" },

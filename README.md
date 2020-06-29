@@ -90,11 +90,12 @@ If you would like to define that all `*.htl` files export the htl-template-loade
 declare module '*.htl' {
   export const {
     render,
+    renderMain,
     getTemplate,
     getTemplates,
     getTemplateNames,
   }: typeof import ('./types') ;
-  export default render;
+  export default renderMain;
 }
 ```
 
