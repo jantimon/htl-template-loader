@@ -1,4 +1,4 @@
 <template data-sly-template.headline="${@ text}">
-  <sly data-sly-use.i18n="com.foo.core.models.i18n"/>
-  <h1>${i18n.salutation} ${text}</h1>
+  <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
+  <h1>${myModel.salutation} ${text}</h1>
 </template>

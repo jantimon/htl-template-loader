@@ -1,12 +1,11 @@
-import { render } from "./article.htl";
+import { renderMain } from "./article.htl";
 
 async function start() {
   document.body.insertAdjacentHTML(
     "beforeend",
-    await render(
-      "article",
+    await renderMain(
       { name: "Sue", body: "Lorem ipsum" },
-      { "com.foo.core.models.i18n": { salutation: "Hey", end: "The end" } }
+      { "com.foo.core.models.myModel": { salutation: "Hey", end: "The end" } }
     )
   );
 }

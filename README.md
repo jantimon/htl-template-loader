@@ -36,7 +36,7 @@ See [./example](./example).
 3. Import render method
 
 ```js
-import template from './template.htl';
+import { render } from './demo.html';
 
 // If no template name is given use the first exported data-sly-template
 console.log(await template({ name: 'Alex' });
@@ -101,8 +101,8 @@ declare module '*.htl' {
 This will give you autocomplete and type detection:
 
 ```ts
-import template from './demo.html';
-console.log(await template({ name: 'Alex' }));
+import { render } from './demo.html';
+console.log(await render({ name: 'Alex' }));
 ```
 
 Unfortunately the `htl-template-loader` is not able to extract the typings for a specific template.  
@@ -121,19 +121,19 @@ console.log(await greetTemplate({name: 'Alex'}));
 
 ```html
 <template data-sly-template.headline="${@ text}">
-  <sly data-sly-use.i18n="com.foo.core.models.i18n"/>
-  <h1>${i18n.salutation} ${text}</h1>
+  <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
+  <h1>${myModel.salutation} ${text}</h1>
 </template>
 ```
 
-Define the model for `com.foo.core.models.i18n` and execute the template:
+Define the model for `com.foo.core.models.myModel` and execute the template:
 
 ```ts
-import render from './demo.html';
+import { render } from './demo.html';
 render(
   { text: 'Alex'}, 
   { 
-    'com.foo.core.models.i18n': { salutation: 'hi' }
+    'com.foo.core.models.myModel': { salutation: 'hi' }
   }
 )
 ```

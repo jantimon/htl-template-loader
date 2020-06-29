@@ -120,7 +120,7 @@ describe("Build Tests", () => {
     );
   });
 
-  it("It allows to provide different models", async () => {
+  it("It allows to provide models which to be used during runtime", async () => {
     /** @type {[import('../types')]} - fixtures/template-root-path/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("model", {
       templateRoot: path.join(__dirname, "fixtures"),
@@ -130,8 +130,21 @@ describe("Build Tests", () => {
       {
         text: "Alex",
       },
-      { "com.foo.core.models.i18n": { salutation: "Hey" } }
+      { "com.foo.core.models.myModel": { salutation: "Hey" } }
     );
     assert.equal(templateResult.trim(), `<h1>Hey Alex</h1>`);
+  });
+
+  it("It allows to render all content of a file instead of a single template", async () => {
+    /** @type {[import('../types')]} - fixtures/main-template/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("main-template", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const template = bundleResult.renderMain;
+    const templateResult = await template(
+      {},
+      { "com.foo.core.models.myModel": { salutation: "Greetings" } }
+    );
+    assert.equal(templateResult.trim(), `<h1>Greetings</h1>`);
   });
 });

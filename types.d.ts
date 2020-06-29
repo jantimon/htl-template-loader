@@ -27,7 +27,16 @@ export function render<TTemplateParameters extends ITemplateParameters>(
 export function render(...args: any[]): Promise<string> {
   throw new Error("This function must not be called directly");
 }
-export default render;
+
+/**
+ * Render the entire file content
+ * @param {ITemplateParameters} templateParameters - all values to be passed into the template
+ */
+export function renderMain<TTemplateParameters extends ITemplateParameters>(
+  mainTemplateParameters: TTemplateParameters,
+  templateModelsMap?: ITemplateModelLoader
+): Promise<string>;
+export default renderMain;
 
 /**
  * Returns all template names
