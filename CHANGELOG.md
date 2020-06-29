@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [2.0.0](https://github.com/jantimon/htl-loader/compare/v1.9.0...v2.0.0) (2020-06-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* the default export is now exporting the render function which renders the entire file
+
+### Features
+
+* export main render function ([0ff6bc1](https://github.com/jantimon/htl-loader/commit/0ff6bc1dd8f4302227014233c563576eae8f3f57))
+
 ## [1.9.0](https://github.com/jantimon/htl-loader/compare/v1.8.0...v1.9.0) (2020-06-26)
 
 
