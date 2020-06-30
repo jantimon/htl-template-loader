@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.0.0](https://github.com/jantimon/htl-loader/compare/v2.1.0...v3.0.0) (2020-06-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* merge models and globals into
+
+### Features
+
+* add support for subcomponents ([9ec9ee0](https://github.com/jantimon/htl-loader/commit/9ec9ee0de0ff4150ae64257b194178fd59fc0c69))
+
 ## [2.1.0](https://github.com/jantimon/htl-loader/compare/v2.0.0...v2.1.0) (2020-06-29)
 
 
