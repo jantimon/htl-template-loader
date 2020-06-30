@@ -130,7 +130,7 @@ describe("Build Tests", () => {
       {
         text: "Alex",
       },
-      { "com.foo.core.models.myModel": { salutation: "Hey" } }
+      { models: { "com.foo.core.models.myModel": { salutation: "Hey" } } }
     );
     assert.equal(templateResult.trim(), `<h1>Hey Alex</h1>`);
   });
@@ -141,20 +141,44 @@ describe("Build Tests", () => {
       templateRoot: path.join(__dirname, "fixtures"),
     });
     const template = bundleResult.renderMain;
-    const templateResult = await template(
-      {},
-      { "com.foo.core.models.myModel": { salutation: "Greetings" } }
-    );
+    const templateResult = await template({
+      models: { "com.foo.core.models.myModel": { salutation: "Greetings" } },
+    });
     assert.equal(templateResult.trim(), `<h1>Greetings</h1>`);
   });
 
-  it("It allows to access global valeus like wcmmode", async () => {
+  it("It allows to access global values like wcmmode", async () => {
     /** @type {[import('../types')]} - fixtures/global-values/entry.js returns a full htl-template-loader result */
     const [bundleResult] = await compile("global-values", {
       templateRoot: path.join(__dirname, "fixtures"),
     });
-    const template = bundleResult.renderMain;
-    const templateResult = await template();
+    const renderMain = bundleResult.renderMain;
+    const templateResult = await renderMain();
     assert.equal(templateResult.trim(), `<div>Live mode</div>`);
+  });
+
+  it("It allows to set global values like wcmmode", async () => {
+    /** @type {[import('../types')]} - fixtures/global-values/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("global-values", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const renderMain = bundleResult.renderMain;
+    const templateResult = await renderMain({
+      globals: { wcmmode: { edit: true } },
+    });
+    assert.equal(templateResult.trim(), `<div>Edit mode</div>`);
+  });
+
+  it("It allows to load resources", async () => {
+    const [bundleResult] = await compile("components", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const { template, resourceItem } = bundleResult;
+    const result = await template({
+      components: {
+        "components/resourceItem": resourceItem,
+      },
+    });
+    assert.equal(result.trim(), `<div>Resource Item</div>`);
   });
 });

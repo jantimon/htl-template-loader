@@ -8,7 +8,11 @@ async function start() {
     await render(
       "article",
       { name: "Sue", body: "Lorem ipsum" },
-      { "com.foo.core.models.myModel": { salutation: "Hey", end: "The end" } }
+      {
+        models: {
+          "com.foo.core.models.myModel": { salutation: "Hey", end: "The end" },
+        },
+      }
     )
   );
 
@@ -16,10 +20,11 @@ async function start() {
     "beforeend",
 
     // Render the entire file
-    await renderMain(
-      { name: "Sue", body: "Lorem ipsum" },
-      { "com.foo.core.models.myModel": { salutation: "Hey", end: "The end" } }
-    )
+    await renderMain({
+      models: {
+        "com.foo.core.models.myModel": { salutation: "Hey", end: "The end" },
+      },
+    })
   );
 }
 

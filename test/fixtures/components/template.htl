@@ -1,0 +1,3 @@
+<sly 
+  data-sly-resource="${'resourceItem' @ resourceType='components/resourceItem'}"
+/>

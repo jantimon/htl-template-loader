@@ -122,7 +122,7 @@ console.log(await greetTemplate({name: 'Alex'}));
 
 ```html
 <template data-sly-template.headline="${@ text}">
-  <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
+  <sly data-sly-use.myModel="com.foo.core.models.myModel" />
   <h1>${myModel.salutation} ${text}</h1>
 </template>
 ```
@@ -134,7 +134,7 @@ import { render } from './demo.html';
 render(
   { text: 'Alex'}, 
   { 
-    'com.foo.core.models.myModel': { salutation: 'hi' }
+    models: { 'com.foo.core.models.myModel': { salutation: 'hi' } }
   }
 )
 ```
