@@ -15,7 +15,7 @@
   ],
   "files": [
     "index.js",
-    "lib/htl-runtime-variables.js",
+    "lib/runtime-variables.js",
     "lib/htl-runtime.js",
     "lib/template-api.js",
     "types.d.ts"
