@@ -1,7 +1,6 @@
 const { getOptions, parseQuery } = require("loader-utils");
 const { Compiler } = require("@adobe/htlengine");
 const path = require("path");
-const globrex = require("globrex");
 
 module.exports = async function (source) {
   const options = getOptions(this);
