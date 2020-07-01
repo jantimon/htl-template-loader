@@ -6,3 +6,7 @@
 
 <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
 <p>${myModel.end}</p>
+
+<sly 
+  data-sly-resource="${'resourceItem' @ resourceType='src/demo'}"
+/>

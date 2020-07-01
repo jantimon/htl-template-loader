@@ -181,4 +181,15 @@ describe("Build Tests", () => {
     });
     assert.equal(result.trim(), `<div>Resource Item</div>`);
   });
+
+  it("It allows to load resources with a resourceRoot", async () => {
+    const [bundleResult] = await compile("components", {
+      templateRoot: path.join(__dirname, "fixtures"),
+      resourceRoot: "./",
+      resourceExtensions: ["htl"],
+    });
+    const { template } = bundleResult;
+    const result = await template();
+    assert.equal(result.trim(), `<div>Resource Item</div>`);
+  });
 });

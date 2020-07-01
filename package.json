@@ -32,6 +32,7 @@
     "mocha": "^8.0.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "standard-version": "8.0.0",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.11"
   },
@@ -39,8 +40,7 @@
     "@adobe/htlengine": "^4.5.0"
   },
   "dependencies": {
-    "loader-utils": "^2.0.0",
-    "standard-version": "8.0.0"
+    "loader-utils": "^2.0.0"
   },
   "husky": {
     "hooks": {

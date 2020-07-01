@@ -15,6 +15,10 @@ module.exports = {
         test: /\.htl$/,
         use: {
           loader: path.resolve("./index.js"),
+          options: {
+            resourceRoot: "./src/",
+            resourceExtensions: ["htl"],
+          },
         },
       },
     ],

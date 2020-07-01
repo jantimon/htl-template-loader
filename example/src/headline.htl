@@ -2,3 +2,4 @@
   <sly data-sly-use.myModel="com.foo.core.models.myModel"/>
   <h1>${myModel.salutation} ${text}!</h1>
 </template>
+
