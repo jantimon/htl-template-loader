@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [3.1.0](https://github.com/jantimon/htl-loader/compare/v3.0.0...v3.1.0) (2020-07-01)
+
+
+### Features
+
+* add automatic resource loading from resourceRoot ([440baac](https://github.com/jantimon/htl-loader/commit/440baac62c89f8ac6d617fa3914929d7ea8f8700))
+
 ## [3.0.0](https://github.com/jantimon/htl-loader/compare/v2.1.0...v3.0.0) (2020-06-30)
 
 
