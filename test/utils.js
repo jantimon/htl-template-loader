@@ -9,7 +9,7 @@ async function compile(fixtureFolderName, options = {}) {
     devtool: false,
     context: path.resolve(__dirname, "fixtures", fixtureFolderName),
     entry: `./entry.js`,
-    mode: "development",
+    mode: "production",
     output: {
       path: distFolder,
       filename: "bundle.js",
