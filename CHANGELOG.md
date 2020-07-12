@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.3](https://github.com/jantimon/htl-loader/compare/v3.1.2...v3.1.3) (2020-07-12)
+
+
+### Bug Fixes
+
+* add support for module path minification ([252e169](https://github.com/jantimon/htl-loader/commit/252e16972a8982548f6f7d71dd261b82053f0f46))
+
 ### [3.1.2](https://github.com/jantimon/htl-loader/compare/v3.1.1...v3.1.2) (2020-07-01)
 
 
