@@ -138,6 +138,29 @@ render(
   }
 )
 ```
+## Globals
+
+`htl-template-loader` allows to define global variables which can be used inside a template
+
+```html
+<template data-sly-template.editMode="${@ text}">
+  <h1>${text}</h1>
+  <div data-sly-test="${wcmmode.edit}">Edit mode</div>
+  <div data-sly-test="${!wcmmode.edit}">Live mode</div>
+</template>
+```
+
+Define the data for `wcmmode.edit` and execute the template:
+
+```ts
+import { render } from './demo.html';
+render(
+  { text: 'Alex'}, 
+  { 
+    globals: { wcmmode: { edit: true } }
+  }
+)
+```
 
 ## License
 
