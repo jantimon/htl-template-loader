@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.4](https://github.com/jantimon/htl-template-loader/compare/v3.1.3...v3.1.4) (2020-07-14)
+
+
+### Bug Fixes
+
+* update standard-version ([fea963c](https://github.com/jantimon/htl-template-loader/commit/fea963c5260994e54cd561ca304af46d4306866c))
+
 ### [3.1.3](https://github.com/jantimon/htl-loader/compare/v3.1.2...v3.1.3) (2020-07-12)
 
 
