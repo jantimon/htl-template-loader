@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [3.1.5](https://github.com/jantimon/htl-template-loader/compare/v3.1.4...v3.1.5) (2020-07-15)
+
+
+### Bug Fixes
+
+* allow to access globals inside templates ([3746b20](https://github.com/jantimon/htl-template-loader/commit/3746b20c470f770060cdcbfcc24c24dcae065608))
+
 ### [3.1.4](https://github.com/jantimon/htl-template-loader/compare/v3.1.3...v3.1.4) (2020-07-14)
 
 
