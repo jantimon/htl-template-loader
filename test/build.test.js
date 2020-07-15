@@ -169,6 +169,31 @@ describe("Build Tests", () => {
     assert.equal(templateResult.trim(), `<div>Edit mode</div>`);
   });
 
+  it("It allows to access global values like wcmmode inside a template", async () => {
+    /** @type {[import('../types')]} - fixtures/global-values/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("global-values", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const render = bundleResult.render;
+    const templateResult = await render({});
+    assert.equal(templateResult.trim(), `<span>Live</span>`);
+  });
+
+  it("It allows to set global values like wcmmode inside a template", async () => {
+    /** @type {[import('../types')]} - fixtures/global-values/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("global-values", {
+      templateRoot: path.join(__dirname, "fixtures"),
+    });
+    const render = bundleResult.render;
+    const templateResult = await render(
+      {},
+      {
+        globals: { wcmmode: { edit: true } },
+      }
+    );
+    assert.equal(templateResult.trim(), `<span>Edit</span>`);
+  });
+
   it("It allows to load resources", async () => {
     const [bundleResult] = await compile("components", {
       templateRoot: path.join(__dirname, "fixtures"),

@@ -25,7 +25,7 @@
   "repository": "github:jantimon/htl-template-loader",
   "license": "MIT",
   "devDependencies": {
-    "@adobe/htlengine": "^4.5.0",
+    "@adobe/htlengine": "^4.6.0",
     "fs-extra": "^9.0.1",
     "husky": "^4.2.5",
     "memfs": "3.2.0",

@@ -1,2 +1,7 @@
 <div data-sly-test="${wcmmode.edit}">Edit mode</div>
 <div data-sly-test="${!wcmmode.edit}">Live mode</div>
+
+<template data-sly-template.globalTest="${@ text}">
+  <span data-sly-test="${wcmmode.edit}">Edit</span>
+  <span data-sly-test="${!wcmmode.edit}">Live</span>
+</template> 
