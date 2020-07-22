@@ -1,5 +1,5 @@
 <template data-sly-template.article="${@ headline, body}">
-  <sly data-sly-use.headline="headline.htl"
-       data-sly-call="${headline.headline @ text=headline}"/>
+  <sly data-sly-use.headlineTemplate="headline.htl"
+       data-sly-call="${headlineTemplate.headline @ text=headline}"/>
   <p>${body}</p>
 </template>

@@ -41,9 +41,9 @@ async function compile(fixtureFolderName, options = {}) {
 
   return new Promise((resolve, reject) => {
     compiler.run((err, stats) => {
-      if (err) reject(err);
+      if (err) return reject(err);
       if (stats.hasErrors())
-        reject(new Error([...stats.toJson().errors].join("\n")));
+        return reject(new Error([...stats.toJson().errors].join("\n")));
       const compiledJs = outputFileSystem
         .readFileSync(path.join(distFolder, "bundle.js"))
         .toString();
