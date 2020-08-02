@@ -1,5 +1,12 @@
 # htl-template-loader
 
+![npm version](https://flat.badgen.net/npm/v/htl-template-loader)
+![license](https://flat.badgen.net/github/license/jantimon/htl-template-loader)
+![travis tests](https://flat.badgen.net/travis/jantimon/htl-template-loader)
+![last commit](https://flat.badgen.net/github/last-commit/jantimon/htl-template-loader)
+![pull requests](https://flat.badgen.net/github/prs/jantimon/htl-template-loader)
+![commits](https://flat.badgen.net/github/commits/jantimon/htl-template-loader)
+
 Webpack loader for HTL/Sightly data-sly-template templates. Based on [`@adobe/htlengine`](https://www.npmjs.com/package/@adobe/htlengine).
 
 ## Installation
@@ -8,7 +15,39 @@ Webpack loader for HTL/Sightly data-sly-template templates. Based on [`@adobe/ht
 
 ## Usage
 
-See [./example](https://github.com/jantimon/htl-template-loader/tree/master/example).
+### Entire files
+
+1. Add loader to `webpack.config.js`:
+
+```js
+{
+  module: {
+    rules: [
+      {
+        test: /\.htl$/,
+        use: ["htl-template-loader"],
+      },
+    ];
+  }
+}
+```
+
+2. Create a template file `template.htl`:
+
+```html
+<h1>Hello World</h1>
+```
+
+3. Import render method
+
+```js
+import { renderMain } from './demo.html';
+
+// Render the entire file
+console.log(await renderMain();
+```
+
+### Templates
 
 1. Add loader to `webpack.config.js`:
 
@@ -81,7 +120,7 @@ your templates uses another templaste called `example/headline.htl` you can set 
 }
 ```
 
-## Typings
+## Typescript Typings
 
 `htl-template-loader` provides optional typescript typings.
 If you would like to define that all `*.htl` files export the htl-template-loader functions you can use:
@@ -116,7 +155,7 @@ const greetTemplate = getTemplate<{ name: string }>("greet");
 console.log(await greetTemplate({ name: "Alex" }));
 ```
 
-## Models
+## Runtime Models
 
 `htl-template-loader` allows to define models which can be used inside a template
 
@@ -139,7 +178,7 @@ render(
 );
 ```
 
-## Globals
+## Runtime Globals
 
 `htl-template-loader` allows to define global variables which can be used inside a template
 
