@@ -8,7 +8,7 @@ Webpack loader for HTL/Sightly data-sly-template templates. Based on [`@adobe/ht
 
 ## Usage
 
-See [./example](./example).
+See [./example](https://github.com/jantimon/htl-template-loader/tree/master/example).
 
 1. Add loader to `webpack.config.js`:
 
@@ -18,8 +18,8 @@ See [./example](./example).
     rules: [
       {
         test: /\.htl$/,
-        use: ["htl-template-loader"]
-      }
+        use: ["htl-template-loader"],
+      },
     ];
   }
 }
@@ -53,11 +53,11 @@ The @adobe/htl-engine provides ships with a `templateLoader` with its own resolv
 
 To the base folder for resolving subtemlates you cen set the `templateRoot` directly for the loader.
 
-For example if your templates inside `/my-project/templates` and 
+For example if your templates inside `/my-project/templates` and
 your templates uses another templaste called `example/headline.htl` you can set `/my-project/templates` as `templateRoot`:
 
 ```html
-<sly 
+<sly
   data-sly-use.headline="example/headline.htl"
   data-sly-call="${headline.headline @ text=text}"
 />
@@ -72,10 +72,10 @@ your templates uses another templaste called `example/headline.htl` you can set 
         use: {
           loader: "htl-template-loader",
           options: {
-            templateRoot: '/my-project/templates'
-          }
-        }
-      }
+            templateRoot: "/my-project/templates",
+          },
+        },
+      },
     ];
   }
 }
@@ -87,14 +87,14 @@ your templates uses another templaste called `example/headline.htl` you can set 
 If you would like to define that all `*.htl` files export the htl-template-loader functions you can use:
 
 ```ts
-declare module '*.htl' {
+declare module "*.htl" {
   export const {
     render,
     renderMain,
     getTemplate,
     getTemplates,
     getTemplateNames,
-  }: typeof import ('./types') ;
+  }: typeof import("htl-template-loader/types");
   export default renderMain;
 }
 ```
@@ -102,18 +102,18 @@ declare module '*.htl' {
 This will give you autocomplete and type detection:
 
 ```ts
-import { render } from './demo.html';
-console.log(await render({ name: 'Alex' }));
+import { render } from "./demo.html";
+console.log(await render({ name: "Alex" }));
 ```
 
 Unfortunately the `htl-template-loader` is not able to extract the typings for a specific template.  
 However you can define the template parameters by hand:
 
 ```ts
-import {getTemplate} from './demo.html';
-const greetTemplate = getTemplate<{ name: string}>('greet');
+import { getTemplate } from "./demo.html";
+const greetTemplate = getTemplate<{ name: string }>("greet");
 
-console.log(await greetTemplate({name: 'Alex'}));
+console.log(await greetTemplate({ name: "Alex" }));
 ```
 
 ## Models
@@ -130,14 +130,15 @@ console.log(await greetTemplate({name: 'Alex'}));
 Define the model for `com.foo.core.models.myModel` and execute the template:
 
 ```ts
-import { render } from './demo.html';
+import { render } from "./demo.html";
 render(
-  { text: 'Alex'}, 
-  { 
-    models: { 'com.foo.core.models.myModel': { salutation: 'hi' } }
+  { text: "Alex" },
+  {
+    models: { "com.foo.core.models.myModel": { salutation: "hi" } },
   }
-)
+);
 ```
+
 ## Globals
 
 `htl-template-loader` allows to define global variables which can be used inside a template
@@ -153,13 +154,13 @@ render(
 Define the data for `wcmmode.edit` and execute the template:
 
 ```ts
-import { render } from './demo.html';
+import { render } from "./demo.html";
 render(
-  { text: 'Alex'}, 
-  { 
-    globals: { wcmmode: { edit: true } }
+  { text: "Alex" },
+  {
+    globals: { wcmmode: { edit: true } },
   }
-)
+);
 ```
 
 ## License
