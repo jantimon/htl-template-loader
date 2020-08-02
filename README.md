@@ -41,7 +41,7 @@ Webpack loader for HTL/Sightly data-sly-template templates. Based on [`@adobe/ht
 3. Import render method
 
 ```js
-import { renderMain } from './demo.html';
+import renderMain from './demo.html';
 
 // Render the entire file
 console.log(await renderMain();
@@ -78,10 +78,10 @@ console.log(await renderMain();
 import { render } from './demo.html';
 
 // If no template name is given use the first exported data-sly-template
-console.log(await template({ name: 'Alex' });
+console.log(await render({ name: 'Alex' });
 
 // To call a specific template pass the name as first parameter
-console.log(await template('greeter', { name: 'Alex' });
+console.log(await render('greeter', { name: 'Alex' });
 ```
 
 ## Loader options
