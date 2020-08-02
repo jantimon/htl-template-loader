@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [5.0.0](https://github.com/jantimon/htl-template-loader/compare/v4.0.0...v5.0.0) (2020-08-02)
+
+### ⚠ BREAKING CHANGES
+
+- the new template engine requires @adobe/htlengine 5.1 or newer
+
+### Features
+
+- use pure template loader to increase performance ([50faa52](https://github.com/jantimon/htl-template-loader/commit/50faa520b745e610a4c6e8799d137cfeb72fdde2))
+
 ## [4.0.0](https://github.com/jantimon/htl-template-loader/compare/v3.1.5...v4.0.0) (2020-07-22)
 
 ### ⚠ BREAKING CHANGES
