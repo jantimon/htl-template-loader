@@ -44,7 +44,7 @@ Webpack loader for HTL/Sightly data-sly-template templates. Based on [`@adobe/ht
 import renderMain from './demo.html';
 
 // Render the entire file
-console.log(await renderMain();
+console.log(await renderMain());
 ```
 
 ### Templates
@@ -78,22 +78,20 @@ console.log(await renderMain();
 import { render } from './demo.html';
 
 // If no template name is given use the first exported data-sly-template
-console.log(await render({ name: 'Alex' });
+console.log(await render({ name: 'Alex' }));
 
 // To call a specific template pass the name as first parameter
-console.log(await render('greeter', { name: 'Alex' });
+console.log(await render('greeter', { name: 'Alex' }));
 ```
 
 ## Loader options
 
 ### templateRoot
 
-The @adobe/htl-engine provides ships with a `templateLoader` with its own resolve logic to import templates inside templates.
+The @adobe/htl-engine ships with a [`scriptResolver`](https://github.com/adobe/htlengine/blob/master/src/compiler/ScriptResolver.js) to align with the AEM template resolution logic.  
+The `templateRoot` option allows to specify a base folder to lookup relative template paths like `example/headline.htl`.  
 
-To the base folder for resolving subtemlates you cen set the `templateRoot` directly for the loader.
-
-For example if your templates inside `/my-project/templates` and
-your templates uses another templaste called `example/headline.htl` you can set `/my-project/templates` as `templateRoot`:
+The following example would look up `example/headline.htl` in `/my-project/templates/example/headline.htl`:
 
 ```html
 <sly
