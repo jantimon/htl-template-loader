@@ -202,6 +202,11 @@ render(
 );
 ```
 
+## Changelog
+
+Since 5.0 the changelog can be found here https://github.com/jantimon/htl-template-loader/releases  
+Old changelog entries can be found here https://github.com/jantimon/htl-template-loader/blob/b47c6d242903f5ab75c2f7f0935a4e2431dafd1d/CHANGELOG.md
+
 ## License
 
 [MIT](http://www.opensource.org/licenses/mit-license)
