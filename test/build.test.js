@@ -217,4 +217,19 @@ describe("Build Tests", () => {
     const result = await template();
     assert.equal(result.trim(), `<div>Resource Item</div>`);
   });
+
+  it("It is able to include another template", async () => {
+    /** @type {[import('../types')]} - fixtures/include-template/entry.js returns a full htl-template-loader result */
+    const [bundleResult] = await compile("include-template", {
+      templateRoot: path.join(__dirname, "fixtures"),
+      resourceRoot: "./",
+      resourceExtensions: ["htl"],
+    });
+    const template = bundleResult.renderMain;
+    const templateResult = await template();
+    assert.equal(
+      templateResult.trim().replace(/\s\s+/g, ""),
+      `<div><!-- Include: test/fixtures/include-template/headline.htl - compile time include not supported by @adobe/htlengine --></div>`
+    );
+  });
 });
