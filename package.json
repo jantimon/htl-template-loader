@@ -26,18 +26,18 @@
   "repository": "github:jantimon/htl-template-loader",
   "license": "MIT",
   "devDependencies": {
-    "@adobe/htlengine": "6.3.2",
+    "@adobe/htlengine": "6.3.4",
     "husky": "^4.2.5",
     "memfs": "3.2.0",
     "mocha": "^8.0.1",
     "prettier": "^2.0.5",
     "pretty-quick": "^2.0.1",
+    "semantic-release": "^17.1.1",
     "webpack": "4.44.1",
-    "webpack-cli": "3.3.12",
-    "semantic-release": "^17.1.1"
+    "webpack-cli": "3.3.12"
   },
   "peerDependencies": {
-    "@adobe/htlengine": "^6.3.1"
+    "@adobe/htlengine": "^6.3.4"
   },
   "dependencies": {
     "loader-utils": "^2.0.0"
