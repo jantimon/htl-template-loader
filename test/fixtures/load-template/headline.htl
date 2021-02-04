@@ -1,3 +1,3 @@
-<template data-sly-template.headline="${@ text}">
+<template data-sly-template.headlineBig="${@ text}">
   <h1>${text}</h1>
 </template>
